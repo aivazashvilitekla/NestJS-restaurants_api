@@ -26,6 +26,7 @@
     "@nestjs/mongoose": "^10.0.4",
     "@nestjs/platform-express": "^10.0.0",
     "@types/express-serve-static-core": "^4.17.43",
+    "class-validator": "^0.14.1",
     "mongoose": "^8.2.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
