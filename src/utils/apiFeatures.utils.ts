@@ -63,4 +63,37 @@ export default class APIFeatures {
       });
     });
   }
+
+  // Delete images
+  static async deleteImages(images) {
+    const s3 = new S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_KEY,
+    });
+
+    let imagesKeys = images.map((image) => {
+      return {
+        Key: image.key,
+      };
+    });
+
+    const params = {
+      Bucket: `${process.env.AWS_S3_BUCKET_NAME}`,
+      Delete: {
+        Objects: imagesKeys,
+        Quiet: false,
+      },
+    };
+
+    return new Promise((resolve, reject) => {
+      s3.deleteObjects(params, function (err, data) {
+        if (err) {
+          console.log(err);
+          reject(false);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  }
 }

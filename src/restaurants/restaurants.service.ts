@@ -92,4 +92,10 @@ export class RestaurantsService {
     );
     return restaurant;
   }
+
+  async deleteImages(images) {
+    if (images.length === 0) return true;
+    const res = await APIFeatures.deleteImages(images);
+    return res;
+  }
 }
