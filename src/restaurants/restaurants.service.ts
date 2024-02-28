@@ -32,19 +32,19 @@ export class RestaurantsService {
       : {};
     const restaurants = await this.restaurantModel
       .find({ ...keyword })
-      .limit(resPerPage)
+      // .limit(resPerPage)
       .skip(skip);
     return restaurants;
   }
 
   // Create new Restaurant => POST /restaurants
   async create(restaurant: Restaurant): Promise<Restaurant> {
-    const location = await APIFeatures.getRestaurantLocation(
-      restaurant.address,
-    );
-    const data = Object.assign(restaurant, { location });
+    // const location = await APIFeatures.getRestaurantLocation(
+    //   restaurant.address,
+    // );
+    // const data = Object.assign(restaurant, { location });
 
-    const res = await this.restaurantModel.create(data);
+    const res = await this.restaurantModel.create(restaurant);
     return res;
   }
 
